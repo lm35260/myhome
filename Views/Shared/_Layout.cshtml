@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - 刮刮乐游戏</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <main role="main">
+        @RenderBody()
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted">© 2025 刮刮乐游戏 - 仅供娱乐使用</span>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

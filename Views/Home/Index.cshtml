@@ -1,0 +1,44 @@
+@{
+    ViewData["Title"] = "刮刮乐游戏";
+}
+
+<div class="container">
+    <div class="header">
+        <h1>🎉 刮刮乐游戏 🎉</h1>
+        <p>用鼠标刮开银色涂层，看看你能中什么奖！</p>
+    </div>
+
+    <div class="game-container">
+        <div class="scratch-card-wrapper">
+            <canvas id="scratchCanvas" width="400" height="250"></canvas>
+            <div id="prizeDisplay" class="prize-display">
+                <div id="prizeText">🎁 神秘大奖</div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button id="resetBtn" class="btn btn-primary">🔄 重新开始</button>
+            <button id="revealBtn" class="btn btn-secondary">👁️ 直接揭晓</button>
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-label">刮开进度:</div>
+            <div class="progress-bar">
+                <div id="progressFill" class="progress-fill"></div>
+            </div>
+            <div id="progressText" class="progress-text">0%</div>
+        </div>
+    </div>
+
+    <div class="instructions">
+        <h3>🎮 游戏说明</h3>
+        <ul>
+            <li>用鼠标左键按住并拖拽来刮开涂层</li>
+            <li>刮开面积达到30%即可看到完整奖品</li>
+            <li>点击"重新开始"可以生成新的刮刮卡</li>
+            <li>点击"直接揭晓"可以立即看到奖品</li>
+        </ul>
+    </div>
+</div>
+
+<script src="~/js/scratch-card.js"></script>
