@@ -242,3 +242,46 @@ body {
 .bounce {
     animation: bounce 1s;
 }
+
+@keyframes hintPulse {
+    0% { 
+        opacity: 0; 
+        transform: translate(-50%, -50%) scale(0.8); 
+    }
+    50% { 
+        opacity: 1; 
+        transform: translate(-50%, -50%) scale(1.1); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: translate(-50%, -50%) scale(1); 
+    }
+}
+
+@keyframes prizeGlow {
+    0%, 100% { 
+        box-shadow: 0 3px 15px rgba(0,0,0,0.3), 0 0 20px rgba(255, 215, 0, 0.5); 
+    }
+    50% { 
+        box-shadow: 0 3px 15px rgba(0,0,0,0.3), 0 0 30px rgba(255, 215, 0, 0.8); 
+    }
+}
+
+@keyframes slideInUp {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+.scratch-hint {
+    animation: hintPulse 1s ease-in-out !important;
+}
+
+.prize-preview {
+    animation: slideInUp 0.5s ease-out, prizeGlow 2s ease-in-out infinite !important;
+}

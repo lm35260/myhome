@@ -169,10 +169,10 @@ class ScratchCard {
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
         
-        // 设置擦除模式
+        // 设置擦除模式（减小半径以便更精细控制）
         this.ctx.globalCompositeOperation = 'destination-out';
         this.ctx.beginPath();
-        this.ctx.arc(x, y, 20, 0, Math.PI * 2);
+        this.ctx.arc(x, y, 12, 0, Math.PI * 2);
         this.ctx.fill();
         
         // 计算刮开进度
@@ -199,11 +199,138 @@ class ScratchCard {
         
         const progress = (transparentPixels / this.totalPixels) * 100;
         this.updateProgress(progress);
+        this.updateScratchHints(progress);
         
-        // 如果刮开面积超过30%，显示完整奖品
-        if (progress > 30 && !this.isRevealed) {
+        // 如果刮开面积超过50%，显示完整奖品（提高阈值以便看到渐进效果）
+        if (progress > 50 && !this.isRevealed) {
             this.reveal();
         }
+    }
+    
+    updateScratchHints(progress) {
+        // 根据刮开进度显示不同的提示文字
+        let hintText = '';
+        let showPrizeHint = false;
+        
+        if (progress < 5) {
+            hintText = '继续刮开...';
+        } else if (progress < 15) {
+            hintText = '有奖品出现了！';
+            showPrizeHint = true;
+        } else if (progress < 25) {
+            hintText = '快要揭晓了...';
+            showPrizeHint = true;
+        } else if (progress < 30) {
+            hintText = '即将揭晓大奖！';
+            showPrizeHint = true;
+        }
+        
+        // 显示提示文字
+        if (hintText && !this.isRevealed) {
+            this.showScratchHint(hintText);
+        }
+        
+        // 逐渐显示奖品信息
+        if (showPrizeHint && this.currentPrize && !this.isRevealed) {
+            this.showPartialPrize(progress);
+        }
+    }
+    
+    showScratchHint(text) {
+        // 移除之前的提示
+        const existingHint = document.querySelector('.scratch-hint');
+        if (existingHint) {
+            existingHint.remove();
+        }
+        
+        // 创建新的提示元素
+        const hint = document.createElement('div');
+        hint.className = 'scratch-hint';
+        hint.textContent = text;
+        hint.style.cssText = `
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 215, 0, 0.9);
+            color: #8B4513;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            animation: hintPulse 1s ease-in-out;
+            pointer-events: none;
+        `;
+        
+        // 添加到刮刮卡容器
+        const wrapper = document.querySelector('.scratch-card-wrapper');
+        wrapper.appendChild(hint);
+        
+        // 2秒后自动移除
+        setTimeout(() => {
+            if (hint.parentNode) {
+                hint.remove();
+            }
+        }, 2000);
+    }
+    
+    showPartialPrize(progress) {
+        // 根据进度逐渐显示奖品信息
+        let partialText = '';
+        const prizeText = this.currentPrize.prize;
+        
+        if (progress >= 15 && progress < 20) {
+            // 显示奖品类型的第一个字符
+            partialText = prizeText.substring(0, 2) + '...';
+        } else if (progress >= 20 && progress < 25) {
+            // 显示更多字符
+            const halfLength = Math.floor(prizeText.length / 2);
+            partialText = prizeText.substring(0, halfLength) + '...';
+        } else if (progress >= 25 && progress < 30) {
+            // 显示大部分内容
+            const mostLength = Math.floor(prizeText.length * 0.8);
+            partialText = prizeText.substring(0, mostLength) + '...';
+        }
+        
+        if (partialText) {
+            this.showPrizePreview(partialText);
+        }
+    }
+    
+    showPrizePreview(text) {
+        // 移除之前的预览
+        const existingPreview = document.querySelector('.prize-preview');
+        if (existingPreview) {
+            existingPreview.remove();
+        }
+        
+        // 创建奖品预览元素
+        const preview = document.createElement('div');
+        preview.className = 'prize-preview';
+        preview.textContent = text;
+        preview.style.cssText = `
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(45deg, ${this.currentPrize.color}, #FFF);
+            color: #8B4513;
+            padding: 10px 20px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 16px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            animation: prizeGlow 2s ease-in-out infinite;
+            pointer-events: none;
+            border: 2px solid #FFD700;
+        `;
+        
+        // 添加到刮刮卡容器
+        const wrapper = document.querySelector('.scratch-card-wrapper');
+        wrapper.appendChild(preview);
     }
     
     updateProgress(progress = 0) {
@@ -251,6 +378,9 @@ class ScratchCard {
         // 清除整个画布
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         
+        // 清除所有提示元素
+        this.clearHints();
+        
         // 更新进度到100%
         this.updateProgress(100);
         
@@ -262,6 +392,12 @@ class ScratchCard {
         
         // 播放庆祝效果
         this.showCelebration();
+    }
+    
+    clearHints() {
+        // 清除所有提示和预览元素
+        const hints = document.querySelectorAll('.scratch-hint, .prize-preview');
+        hints.forEach(hint => hint.remove());
     }
     
     showCelebration() {
@@ -303,6 +439,9 @@ class ScratchCard {
     }
     
     async reset() {
+        // 清除所有提示元素
+        this.clearHints();
+        
         await this.loadNewPrize();
         this.drawScratchLayer();
         

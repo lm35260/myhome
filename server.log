@@ -1,0 +1,58 @@
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager[62]
+      User profile is available. Using '/root/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+[40m[32minfo[39m[22m[49m: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://0.0.0.0:12000
+[40m[32minfo[39m[22m[49m: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+[40m[32minfo[39m[22m[49m: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Production
+[40m[32minfo[39m[22m[49m: Microsoft.Hosting.Lifetime[0]
+      Content root path: /workspace/myhome/
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://localhost:12000/ - -
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'ScratchCardGame.Controllers.HomeController.Index (ScratchCardGame)'
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[3]
+      Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller ScratchCardGame.Controllers.HomeController (ScratchCardGame).
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor[1]
+      Executing ViewResult, running view Index.
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor[4]
+      Executed ViewResult - view Index executed in 34.7659ms.
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[2]
+      Executed action ScratchCardGame.Controllers.HomeController.Index (ScratchCardGame) in 45.052ms
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'ScratchCardGame.Controllers.HomeController.Index (ScratchCardGame)'
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://localhost:12000/ - - - 200 - text/html;+charset=utf-8 85.1459ms
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://work-1-kmitlksottopincs.prod-runtime.all-hands.dev/ - -
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'ScratchCardGame.Controllers.HomeController.Index (ScratchCardGame)'
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[3]
+      Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller ScratchCardGame.Controllers.HomeController (ScratchCardGame).
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor[1]
+      Executing ViewResult, running view Index.
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor[4]
+      Executed ViewResult - view Index executed in 2.0567ms.
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[2]
+      Executed action ScratchCardGame.Controllers.HomeController.Index (ScratchCardGame) in 2.3495ms
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'ScratchCardGame.Controllers.HomeController.Index (ScratchCardGame)'
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://work-1-kmitlksottopincs.prod-runtime.all-hands.dev/ - - - 200 - text/html;+charset=utf-8 2.8451ms
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/1.1 GET http://work-1-kmitlksottopincs.prod-runtime.all-hands.dev/ - -
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'ScratchCardGame.Controllers.HomeController.Index (ScratchCardGame)'
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[3]
+      Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller ScratchCardGame.Controllers.HomeController (ScratchCardGame).
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor[1]
+      Executing ViewResult, running view Index.
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor[4]
+      Executed ViewResult - view Index executed in 0.408ms.
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[2]
+      Executed action ScratchCardGame.Controllers.HomeController.Index (ScratchCardGame) in 0.5381ms
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'ScratchCardGame.Controllers.HomeController.Index (ScratchCardGame)'
+[40m[32minfo[39m[22m[49m: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/1.1 GET http://work-1-kmitlksottopincs.prod-runtime.all-hands.dev/ - - - 200 - text/html;+charset=utf-8 0.8016ms
